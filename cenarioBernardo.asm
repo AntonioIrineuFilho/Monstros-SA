@@ -24,7 +24,7 @@ fimFundo:
     
 forPiso:
     beq $0, $11, fimPiso    
-    sw $10, 0($8)           
+    sw $10, 2560($8)          
     addi $8, $8, 4          
     sub $11, $11, 1        
     j forPiso  
