@@ -415,6 +415,7 @@ funcDelay2:
 	jal delay  
 
 #-------------------------------cenário Bernardo----------------------------------------------------------------------------
+
     lui $8, 0x1001         
     addi $9, $0, 0xFFFFF0  #parede 
     addi $10, $0, 0xc57d56  #piso
@@ -424,7 +425,7 @@ funcDelay2:
     addi $14, $0, 0xe5bc43 #luz janela
     addi $15, $0, 0x5C4033 #janela 
 forFundo2: 
-    beq $0, $11, fimFundo2
+    beq $0, $11, fimFundo2 
     sw $9, 0($8)           
     addi $8, $8, 4         
     sub $11, $11, 1         
@@ -438,7 +439,7 @@ fimFundo2:
     
 forPiso:
     beq $0, $11, fimPiso    
-    sw $10, 0($8)           
+    sw $10, 2560($8)          
     addi $8, $8, 4          
     sub $11, $11, 1        
     j forPiso  
@@ -1202,4 +1203,3 @@ wait:
 fimWait:
 	jr $31
 	
-
