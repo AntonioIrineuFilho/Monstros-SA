@@ -1,8 +1,8 @@
 .data
 .text
-# REG LIBERADOS -> 12 ATÉ 25
+# REG LIBERADOS -> 12 ATÃ‰ 25
 main:
-	lui $8, 0x1001 # primeiro endereço de memória
+	lui $8, 0x1001 # primeiro endereÃ§o de memÃ³ria
 	addi $9, $0, 0xa5abc5 # cor do fundo
 	addi $10, $0, 0x636194 # cor dos pilares e da borda das janelas
 	addi $11, $0, 0xe5bc43 # cor luz das janelas
@@ -11,8 +11,8 @@ main:
 forFundo:
 	beq $0, $12, fimFundo
 	
-	sw $9, 0($8) # gravou a cor no endereço
-	addi $8, $8, 4 # passou pro proximo endereço
+	sw $9, 0($8) # gravou a cor no endereÃ§o
+	addi $8, $8, 4 # passou pro proximo endereÃ§o
 	
 	sub $12, $12, 1
 	j forFundo
@@ -352,3 +352,12 @@ forSolo:
 fimPrograma:
 	addi $2, $0, 10
 	syscall
+
+
+
+orbe:
+	addi $13, $0, 0x00439d # pontas do orbe
+	addi $14, $0, 0x090092 # cruz do orbe
+	sw $13, 4($0)
+	sw $13, 
+	
