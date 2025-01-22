@@ -1,6 +1,6 @@
 .data
 .text
-# REG LIBERADOS -> 12 ATÃ‰ 25
+# REG LIBERADOS -> 13 ATÃ‰ 25
 main:
 	lui $8, 0x1001 # primeiro endereÃ§o de memÃ³ria
 	addi $9, $0, 0xa5abc5 # cor do fundo
@@ -336,7 +336,7 @@ fimLuzJanela:
 	addi $12, $0, 0x5c5696 # solo
 	addi $13, $0, 896 # i
 forSolo:
-	beq $0, $13, fimPrograma
+	beq $0, $13, fimSolo
 	
 	sw $12, 0($8)
 	addi $8, $8, 4
@@ -349,15 +349,100 @@ forSolo:
         
         addi $20, $0, 8192
         
+fimSolo:
+	jal copiaCenario
+	jal movOrbe
+continue:    
+        
 fimPrograma:
 	addi $2, $0, 10
 	syscall
 
+#-------------------FUN��ES---------------------------------------------------------------------------------
 
+# REGS COM CORES -> 9, 10, 11, 12, 13, 14
+# REG DELAY -> 15
+# REG MOV ORBE -> 16 E 17
 
-orbe:
-	addi $13, $0, 0x00439d # pontas do orbe
-	addi $14, $0, 0x090092 # cruz do orbe
-	sw $13, 4($0)
-	sw $13, 
+delay:
+	addi $15, $0, 10000
+forDelay:
+	beq $0, $15, fimDelay
+	nop
+	nop
+	nop
+	sub $15, $15, 1
+	j forDelay
+fimDelay:
+	jr $31
+
+#--------------------------------------------------------------------------------
+
+copiaCenario:
+	lui $8, 0x1001
+	addi $13, $0, 8192 # i
+forCopia:
+	beq $0, $13, fimCopia
 	
+	lw $14, 0($8)
+	sw $14, 32768($8)
+	addi $8, $8, 4
+	
+	sub $13, $13, 1
+	j forCopia
+fimCopia:
+	jr $31
+	
+#--------------------------------------------------------------------------------
+	
+			
+orbe:
+	addi $13, $0, 0x00439d # laterais do orbe
+	addi $14, $0, 0x2e24bd # cruz do orbe
+	sw $13, 8($8)
+	sw $13, 12($8)
+	sw $13, 16($8)
+	sw $13, 516($8)
+	sw $13, 520($8)
+	sw $14, 524($8)
+	sw $13, 528($8)
+	sw $13, 532($8)
+	sw $13, 1028($8)
+	sw $14, 1032($8)
+	sw $14, 1036($8)
+	sw $14, 1040($8)
+	sw $13, 1044($8)
+	sw $13, 1540($8)
+	sw $13, 1544($8)
+	sw $14, 1548($8)
+	sw $13, 1552($8)
+	sw $13, 1556($8)
+	sw $13, 2056($8)
+	sw $13, 2060($8)
+	sw $13, 2064($8)
+	jr $31
+
+	
+#--------------------------------------------------------------------------------		
+	
+				
+										
+movOrbe:
+	lui $8, 0x1001 
+	addi $16, $0, 10 # i
+	add $17, $0, $31
+forMov:
+	beq $0, $16, fimMov
+	
+	jal orbe
+	jal delay
+	addi $8, $8, 512
+	
+	sub $16, $16, 1
+	j forMov
+fimMov:
+	add $31, $0, $17
+	jr $31 
+
+
+#--------------------------------------------------------------------------------
