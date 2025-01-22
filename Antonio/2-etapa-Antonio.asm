@@ -446,7 +446,7 @@ forMov:
 	sub $16, $16, 1
 	j forMov
 fimMov:
-	jal orbe
+	j movOrbe
 	add $31, $0, $17
 	jr $31 
 
