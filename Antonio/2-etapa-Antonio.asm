@@ -1,8 +1,8 @@
 .data
 .text
-# REG LIBERADOS -> 13 ATÃ‰ 25
+# REG LIBERADOS -> 13 ATE 25
 main:
-	lui $8, 0x1001 # primeiro endereÃ§o de memÃ³ria
+	lui $8, 0x1001 # primeiro endereco de memoria
 	addi $9, $0, 0xa5abc5 # cor do fundo
 	addi $10, $0, 0x636194 # cor dos pilares e da borda das janelas
 	addi $11, $0, 0xe5bc43 # cor luz das janelas
@@ -11,8 +11,8 @@ main:
 forFundo:
 	beq $0, $12, fimFundo
 	
-	sw $9, 0($8) # gravou a cor no endereÃ§o
-	addi $8, $8, 4 # passou pro proximo endereÃ§o
+	sw $9, 0($8) # gravou a cor no endereco
+	addi $8, $8, 4 # passou pro proximo endereco
 	
 	sub $12, $12, 1
 	j forFundo
@@ -358,12 +358,12 @@ fimPrograma:
 	addi $2, $0, 10
 	syscall
 
-#-------------------FUN��ES-----------------------------------------------------------------------
+#-------------------FUNCOES-----------------------------------------------------------------------
 
-# REGS COM CORES -> 9, 10, 11, 12, 13, 14 (COPIA DO CEN�RIO FEITA, PODE REAPROVEITAR DO 9 AO 12)
+# REGS COM CORES -> 9, 10, 11, 12, 13, 14 (COPIA DO CENARIO FEITA, PODE REAPROVEITAR DO 9 AO 12)
 # REG DELAY -> 15
 # REGS MOV ORBE -> 16 E 17
-# REGS RECUPERA CEN�RIO -> 18 E 19
+# REGS RECUPERA CENARIO -> 18 E 19
 
 delay:
 	addi $15, $0, 20000
