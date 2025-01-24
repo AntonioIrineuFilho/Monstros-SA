@@ -6,7 +6,7 @@ boo:
 	lui $10, 0x1001
 
     	addi $11, $0, 0xFF0022  # VERMELHO
-   	addi $10, $10, 16400    # Posi√ß√£o inicial 
+   	add $10, $10, $a0    # PosiÁ„o inicial 
    	
     	addi $12, $0, 0x6f476c	#CABELO 
     	addi $13, $0, 0xf85da6	#ROSA - XUXA E VESTIDO
@@ -16,8 +16,7 @@ boo:
     	addi $17, $0, 0x8a4a4a	#MARROM - OLHOS
     	addi $18, $0, 0xd43580  #ROSA ESCURO - BORDA VESTIDO
     	
-    
-    	sw $11, 0($10) # $10 EST√Å APONTANDO PARA C√Å 
+    	sw $11, 0($10) # $10 EST· APONTANDO PARA C·
     	
     	########1######
     	sw $12, 540($10)
@@ -43,7 +42,6 @@ boo:
     	sw $12, 1084($10)
     	sw $12, 1088($10)
     	sw $12, 1092($10)
-    	
     	########3########
     	sw $12, 1540($10)
     	sw $12, 1544($10)
@@ -63,7 +61,6 @@ boo:
     	sw $12, 1600($10)
     	sw $12, 1604($10)
     	sw $12, 1608($10)
-    	
     	########4#######
     	sw $12, 2052($10)
     	sw $12, 2056($10)
@@ -83,7 +80,6 @@ boo:
     	sw $12, 2112($10)
     	sw $12, 2116($10)
     	sw $12, 2120($10)
-    	
     	########5########
     	sw $12, 2564($10)
     	sw $12, 2568($10)
