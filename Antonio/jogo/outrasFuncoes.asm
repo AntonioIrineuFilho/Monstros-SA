@@ -12,7 +12,7 @@
 # REGS RECUPERA CENARIO E CHAMA COLISAO-> 18 E 19
 
 delay:
-	addi $15, $0, 300000
+	addi $15, $0, 100000
 forDelay:
 	beq $0, $15, fimDelay
 	nop
@@ -46,6 +46,9 @@ fimCopia:
 movOrbe:
 	lui $8, 0x1001 
 	lui $9, 0x1001
+	lui $10, 0x1001
+	lui $11, 0x1001
+	lui $12, 0x1001
 	addi $16, $0, 200 # i
 	add $17, $0, $31
 forMov:
@@ -53,10 +56,16 @@ forMov:
 	
 	jal orbe1
 	jal orbe2
+	jal orbe3
+	jal orbe4
+	jal orbe5
 	jal delay
 	jal recuperaCenario
 	addi $8, $8, 512
-	addi $9, $9, 1024
+	addi $9, $9, 512
+	addi $10, $10, 2048
+	addi $11, $11, 1024
+	addi $12, $12, 1536
 	
 	sub $16, $16, 1
 	j forMov
@@ -66,7 +75,7 @@ fimMov:
 	jr $31 
 	
 #---------------------------------------------------------------
-
+	
 colisaoOrbe:
         addi $4, $0, 'G'
         addi $2, $0, 11
@@ -103,6 +112,6 @@ colisaoOrbe:
         addi $4, $0, 'R'
         addi $2, $0, 11
         syscall
-
+	
 	addi $2, $0, 10
 	syscall
