@@ -1,16 +1,43 @@
 .text
 .globl moveDireitaRyan
+.globl moveEsquerdaRyan
 .globl timer
+.globl startGame2
 
-	addi $20, $0, 'w'
-	addi $21, $0, 'a'
-	addi $22, $0, 's'
-	addi $23, $0, 'd'
+	
 startGame2:
+	
+	add $25, $31, $0
+	
+	addi $20, $0, ' '
+	addi $21, $0, 'a'
+	addi $22, $0, 'd'
+	lui $19, 0xffff
+	
+loopGameRyan:
 
-fimStartGame: j startGame2
+	lw $23, 0($19)
+	beq $23, $0, fimLoopGame
+	lw $23, 4($19)
+
+	beq $23, $21, callEsquerda
+	beq $23, $22, callDireita
+	# beq pulo
+	j loopGameRyan
+	
+callEsquerda: 
+	jal moveEsquerdaRyan
+	j fimLoopGame
+callDireita:
+	jal moveDireitaRyan
+	j fimLoopGame
+
+fimLoopGame: j loopGameRyan
+	
+	add $31, $0, $25
 	
 
+# reg USADOS: $11, 8, 9
 moveDireitaRyan:
 
 	add $24, $0, $31
@@ -111,37 +138,133 @@ moveDireitaRyan:
 	
 	addi $a0, $a0, 4
 
-	
 	jal boo
 	
 	add $31, $0, $24
+	addi $8, $0, 0
+	addi $9, $0, 0
 	jr $31
 	
-######MOVE ESQUERDA
+######MOVE ESQUERDA30
 moveEsquerdaRyan:
 	
-	add $21, $0, $31
+	add $11, $0, $31
 	lui $8, 0x1001
 	add $8, $8, $a0
 	
 	jal timer 
 	
-	## FINALIZAR 
+	lw $9, 33328($8)
+	sw $9, 560($8)
+
+	lw $9, 33860($8)
+	sw $9, 1092($8)
+
+	lw $9, 34376($8)
+	sw $9, 1608($8)
+
+	lw $9, 34888($8)
+	sw $9, 2120($8)
+
+	lw $9, 35336($8)
+	sw $9, 2568($8)
+
+lw $9, 35388($8)
+sw $9, 2620($8)
+
+lw $9, 35400($8)
+sw $9, 2632($8)
+
+lw $9, 35848($8)
+sw $9, 3080($8)
+
+lw $9, 35900($8)
+sw $9, 3132($8)
+
+lw $9, 35912($8)
+sw $9, 3144($8)
+
+lw $9, 36360($8)
+sw $9, 3588($8)
+
+lw $9, 36412($8)
+sw $9, 3644($8)
+
+lw $9, 36424($8)
+sw $9, 3656($8)
+
+lw $9, 36928($8)
+sw $9, 4160($8)
+
+lw $9, 37440($8)
+sw $9, 4672($8)
+
+lw $9, 37948($8)
+sw $9, 5180($8)
+
+lw $9, 38456($8)
+sw $9, 5688($8)
+
+lw $9, 38964($8)
+sw $9, 6196($8)
+
+lw $9, 39476($8)
+sw $9, 6708($8)
+
+lw $9, 39992($8)
+sw $9, 7224($8)
+
+lw $9, 40508($8)
+sw $9, 7740($8)
+
+lw $9, 41020($8)
+sw $9, 8252($8)
+
+lw $9, 41532($8)
+sw $9, 8764($8)
+
+lw $9, 42044($8)
+sw $9, 9276($8)
+
+lw $9, 42548($8)
+sw $9, 9780($8)
+
+lw $9, 43060($8)
+sw $9, 10292($8)
+
+lw $9, 43552($8)
+sw $9, 10784($8)
+
+lw $9, 43568($8)
+sw $9, 10800($8)
+
+lw $9, 44064($8)
+sw $9, 11296($8)
+
+lw $9, 44080($8)
+sw $9, 11312($8)
+
+	addi $a0, $a0, -4
 	
 	jal boo
-	add $31, $0, $21
+	add $31, $0, $11
+	addi $8, $0, 0
+	addi $9, $0, 0
 	jr $31
 	
 ############## FUNÇÃO TIMER
 
-timer: sw $16, 0($29)
-       addi $29, $29, -4
-       addi $16, $0, 500000
-forT:  beq $16, $0, fimT
-       nop
-       nop
-       addi $16, $16, -1      
-       j forT                  
-fimT:  addi $29, $29, 4                                                    
-       lw $16, 0($29)          
-       jr $31
+
+timer: 
+	sw $16, 0($29)
+     	addi $29, $29, -4
+       	addi $16, $0, 2500
+forT:  	beq $16, $0, fimT
+       	nop
+       	nop
+       	addi $16, $16, -1      
+       	j forT                  
+fimT:  	addi $29, $29, 4                                                    
+       	lw $16, 0($29)
+  
+       	jr $31
