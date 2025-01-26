@@ -1,5 +1,7 @@
 .data
 .text
+.globl main
+.globl fim
 
 main:
 	jal cenario
