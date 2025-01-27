@@ -14,6 +14,9 @@ Luz das janelas -> #e5bc43
 
 ## NPCs
 
+Contorno dos orbes -> #00439d
+
+Cruz dos orbes -> #2e24bd
 
 
 ## Protagonista
