@@ -6,8 +6,7 @@
 main:
 	jal cenario
 	jal copiaCenario
-	jal movOrbe
-
+	jal sully
 fim:
 	addi $2, $0, 10
 	syscall
