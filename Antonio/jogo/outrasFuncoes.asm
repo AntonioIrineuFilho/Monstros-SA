@@ -1,7 +1,8 @@
 .data
 .text
+.globl delay
 .globl copiaCenario
-.globl movOrbe
+.globl movOrbes
 .globl colisaoOrbe
 .globl movSully
 
@@ -17,7 +18,7 @@
 # REGS NAO UTILIZADOS -> 23, 24, 25
 
 delay:
-	addi $15, $0, 100000
+	addi $15, $0, 1000000
 forDelay:
 	beq $0, $15, fimDelay
 	nop
@@ -48,7 +49,7 @@ fimCopia:
 #--------------------------------------------------------------------------------	
 								
 										
-movGeral:
+movOrbes:
 	lui $8, 0x1001 
 	lui $9, 0x1001
 	lui $10, 0x1001
@@ -65,8 +66,7 @@ forMov:
 	jal orbe4
 	jal orbe5
 	jal delay
-	jal recuperaCenario
-	jal movSully
+	jal recuperaCenarioOrbes
 	addi $8, $8, 512
 	addi $9, $9, 512
 	addi $10, $10, 2048
@@ -76,7 +76,7 @@ forMov:
 	sub $16, $16, 1
 	j forMov
 fimMov:
-	j movOrbe
+	j movOrbes
 	add $31, $0, $17
 	jr $31 
 	
@@ -126,7 +126,7 @@ colisaoOrbe:
 movSully:
 	lui $13, 0xffff # guarda 1 se tiver entrada do teclado e 0 se não tiver
 	lw $14, 0($13) # guarda o valor teclado no 14
-	
+	beq $14, $0, fimMovSully
 	lw $14, 4($13)
 	
 	addi $15, $0, 65 # tecla A
@@ -138,6 +138,8 @@ movSully:
 	beq $15, $14, movDireita
 	addi $15, $0, 100 # tecla d
 	beq $15, $14, movDireita
-	
+
+fimMovSully:
 	jr $31
+	
 	

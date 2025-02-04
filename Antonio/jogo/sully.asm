@@ -1,14 +1,17 @@
 .data
 .text
 .globl sully
-.globl sullyEsquerda
+.globl movEsquerda
+.globl movDireita
 
 
-sullyEsquerda:
-	lui $21, 0x1001
+movEsquerda:
 	addi $21, $21, -4
-	jal sully
-	jr $31
+	j testeMov
+
+movDireita:
+	addi $21, $21, 4
+	j testeMov
 
 
 sully:
