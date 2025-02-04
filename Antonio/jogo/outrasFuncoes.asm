@@ -3,6 +3,7 @@
 .globl copiaCenario
 .globl movOrbe
 .globl colisaoOrbe
+.globl movSully
 
 #-------------------FUNCOES-----------------------------------------------------------------------
 
@@ -10,6 +11,10 @@
 # REG DELAY -> 15
 # REGS MOV ORBE -> 16 E 17
 # REGS RECUPERA CENARIO E CHAMA COLISAO-> 18 E 19
+
+# REGS QUE NAO PODE MEXER -> 8, 9, 10, 11, 12, 16, 17, 21
+# REGS QUE PODE-SE REAPROVEITAR -> 13, 14, 15, 18, 19, 20, 22
+# REGS NAO UTILIZADOS -> 23, 24, 25
 
 delay:
 	addi $15, $0, 100000
@@ -43,7 +48,7 @@ fimCopia:
 #--------------------------------------------------------------------------------	
 								
 										
-movOrbe:
+movGeral:
 	lui $8, 0x1001 
 	lui $9, 0x1001
 	lui $10, 0x1001
@@ -61,6 +66,7 @@ forMov:
 	jal orbe5
 	jal delay
 	jal recuperaCenario
+	jal movSully
 	addi $8, $8, 512
 	addi $9, $9, 512
 	addi $10, $10, 2048
@@ -74,7 +80,7 @@ fimMov:
 	add $31, $0, $17
 	jr $31 
 	
-#---------------------------------------------------------------
+#--------------------------------------------------------------------------------
 	
 colisaoOrbe:
         addi $4, $0, 'G'
@@ -114,3 +120,24 @@ colisaoOrbe:
         syscall
 	
 	j fim
+
+#--------------------------------------------------------------------------------
+
+movSully:
+	lui $13, 0xffff # guarda 1 se tiver entrada do teclado e 0 se não tiver
+	lw $14, 0($13) # guarda o valor teclado no 14
+	
+	lw $14, 4($13)
+	
+	addi $15, $0, 65 # tecla A
+	beq $15, $14, movEsquerda
+	addi $15, $0, 97 # tecla a
+	beq $15, $14, movEsquerda
+	
+	addi $15, $0, 68 # tecla D
+	beq $15, $14, movDireita
+	addi $15, $0, 100 # tecla d
+	beq $15, $14, movDireita
+	
+	jr $31
+	
