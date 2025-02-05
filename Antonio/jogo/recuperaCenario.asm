@@ -1,7 +1,6 @@
 .data 
 .text 
-.globl recuperaCenarioOrbes
-.globl recuperaCenarioSully
+.globl recuperaCenarioOrbes, recuperaCenarioSully
 
 recuperaCenarioSully:
         addi $18, $21, 20188

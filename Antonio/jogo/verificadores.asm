@@ -1,10 +1,7 @@
 .data
 .text
-.globl verificador1
-.globl verificador2
-.globl verificador3
-.globl verificador4
-.globl verificador5
+.globl verificador1, verificador2, verificador3, verificador4, verificador5
+
 
 verificador1:
 	

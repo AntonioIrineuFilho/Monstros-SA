@@ -1,16 +1,13 @@
 .data
 .text
-.globl main
-.globl fim
-.globl testeMov
+.globl main, fim, testeMov
 
 main:
 	jal cenario
 	jal copiaCenario
 	lui $21, 0x1001
-testeMov:
 	jal sully
-	jal recuperaCenarioSully
+testeMov:
 	jal movSully
 	j testeMov
 fim:

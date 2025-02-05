@@ -1,11 +1,6 @@
 .data
 .text
-.globl orbe1
-.globl orbe2
-.globl orbe3
-.globl orbe4
-.globl orbe5
-
+.globl orbe1, orbe2, orbe3, orbe4, orbe5
 
 
 orbe1:

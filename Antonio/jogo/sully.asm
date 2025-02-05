@@ -1,16 +1,18 @@
 .data
 .text
-.globl sully
-.globl movEsquerda
-.globl movDireita
+.globl sully, movEsquerda, movDireita
 
 
 movEsquerda:
-	addi $21, $21, -4
+	jal recuperaCenarioSully
+	addi $21, $21, -8
+	jal sully
 	j testeMov
 
 movDireita:
-	addi $21, $21, 4
+	jal recuperaCenarioSully
+	addi $21, $21, 8
+	jal sully
 	j testeMov
 
 
@@ -407,39 +409,5 @@ sully:
 	sw $20, 0($22)
 	addi $22, $21, 28400
 	sw $20, 0($22)
-	
-	jr $31
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	jr $31

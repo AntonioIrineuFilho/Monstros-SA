@@ -1,10 +1,7 @@
 .data
 .text
-.globl delay
-.globl copiaCenario
-.globl movOrbes
-.globl colisaoOrbe
-.globl movSully
+.globl delay, copiaCenario, movOrbes, colisaoOrbe, movSully
+
 
 #-------------------FUNCOES-----------------------------------------------------------------------
 
@@ -124,7 +121,8 @@ colisaoOrbe:
 #--------------------------------------------------------------------------------
 
 movSully:
-	lui $13, 0xffff # guarda 1 se tiver entrada do teclado e 0 se não tiver
+	add $18, $0, $31
+	lui $13, 0xffff # guarda 1 se tiver entrada do teclado e 0 se nï¿½o tiver
 	lw $14, 0($13) # guarda o valor teclado no 14
 	beq $14, $0, fimMovSully
 	lw $14, 4($13)
@@ -140,6 +138,7 @@ movSully:
 	beq $15, $14, movDireita
 
 fimMovSully:
+	add $31, $0, $18
 	jr $31
 	
 	
