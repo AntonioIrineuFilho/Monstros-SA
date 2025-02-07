@@ -1,6 +1,6 @@
 .data
 .text
-.globl delay, copiaCenario, movGeral, returnMovSully, colisaoOrbe, movSully
+.globl delay, copiaCenario, movGeral, returnMovSully, gameOver, movSully
 
 
 #-------------------FUNCOES-----------------------------------------------------------------------
@@ -52,11 +52,7 @@ movGeral:
 	lui $10, 0x1001
 	lui $11, 0x1001
 	lui $12, 0x1001
-	addi $16, $0, 200 # i
-	add $17, $0, $31
 	forMov:
-		beq $0, $16, fimMov
-		
 		jal movSully
 		returnMovSully:
 		jal orbe1
@@ -67,21 +63,16 @@ movGeral:
 		jal delay
 		jal recuperaCenarioOrbes
 		addi $8, $8, 512
-		addi $9, $9, 512
-		addi $10, $10, 512
+		addi $9, $9, 1024
+		addi $10, $10, 1536
 		addi $11, $11, 512
 		addi $12, $12, 512
-		
-		sub $16, $16, 1
-		j forMov
-		fimMov:
-			j movGeral
-			add $31, $0, $17
-			jr $31 
+
+		j forMov 
 	
 #--------------------------------------------------------------------------------
 	
-colisaoOrbe:
+gameOver:
 	jal sully
 	
         addi $4, $0, 'G'
@@ -142,6 +133,7 @@ movSully:
 	beq $15, $14, movDireita
 
 	fimMovSully:
+		jal sully
 		add $31, $0, $18
 		jr $31
 	
