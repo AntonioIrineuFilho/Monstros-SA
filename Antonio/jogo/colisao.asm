@@ -89,6 +89,7 @@ colisaoComSully1:
         
         jal sully
         lui $8, 0x1001
+        addi $25, $25, 1
         j returnMovSully
         
 colisaoComSully2:
@@ -178,6 +179,7 @@ colisaoComSully2:
         
         jal sully
         lui $9, 0x1001
+        addi $25, $25, 1
         j returnMovSully
         
 colisaoComSully3:
@@ -267,6 +269,7 @@ colisaoComSully3:
 
         jal sully
         lui $10, 0x1001
+        addi $25, $25, 1
         j returnMovSully
 
 colisaoComSully4:
@@ -356,6 +359,7 @@ colisaoComSully4:
         
         jal sully
         lui $11, 0x1001
+        addi $25, $25, 1
         j returnMovSully
 
 
@@ -446,4 +450,5 @@ colisaoComSully5:
 
         jal sully
         lui $12, 0x1001
+        addi $25, $25, 1
         j returnMovSully

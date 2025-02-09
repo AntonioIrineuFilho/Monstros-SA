@@ -1,6 +1,7 @@
 .data
+msgMenuInicial:	.asciiz "MONSTERS INC - MINIGAME COLLECTION\n1-SULLY MINIGAME\n2-BOO MINIGAME\n3-MIKE MINIGAME\n"
 .text
-.globl delay, copiaCenario, movGeral, returnMovSully, gameOver, movSully
+.globl delay, copiaCenario, movGeral, returnMovSully, movSully, menuInicial, gameOver
 
 
 #-------------------FUNCOES-----------------------------------------------------------------------
@@ -15,7 +16,7 @@
 # REGS NAO UTILIZADOS -> 23, 24, 25
 
 delay:
-	addi $15, $0, 200000
+	addi $15, $0, 25000 # delay ideial: 200000
 	forDelay:
 		beq $0, $15, fimDelay
 		nop
@@ -69,11 +70,127 @@ movGeral:
 		addi $12, $12, 512
 
 		j forMov 
+
+#--------------------------------------------------------------------------------
+
+movSully:
+	add $18, $0, $31
+	lui $13, 0xffff # guarda 1 se tiver entrada do teclado e 0 se n�o tiver
+	lw $14, 0($13) # guarda o valor teclado no 14
+	beq $14, $0, fimMovSully
+	lw $14, 4($13)
 	
+	addi $15, $0, 65 # tecla A
+	beq $15, $14, movEsquerda
+	addi $15, $0, 97 # tecla a
+	beq $15, $14, movEsquerda
+	
+	addi $15, $0, 68 # tecla D
+	beq $15, $14, movDireita
+	addi $15, $0, 100 # tecla d
+	beq $15, $14, movDireita
+
+	fimMovSully:
+		jal sully
+		add $31, $0, $18
+		jr $31
+
+#--------------------------------------------------------------------------------
+
+menuInicial:
+	la $16, msgMenuInicial
+	add $4, $0, $16
+	addi $2, $0, 4 # syscall de string
+	syscall
+	
+	jr $31
+
+#--------------------------------------------------------------------------------
+						
+orbesColetados:
+        addi $4, $0, 'O'
+        addi $2, $0, 11
+        syscall
+
+        addi $4, $0, 'R'
+        addi $2, $0, 11
+        syscall
+
+        addi $4, $0, 'B'
+        addi $2, $0, 11
+        syscall
+
+        addi $4, $0, 'E'
+        addi $2, $0, 11
+        syscall
+
+        addi $4, $0, 'S'
+        addi $2, $0, 11
+        syscall
+
+        addi $4, $0, ' '
+        addi $2, $0, 11
+        syscall
+
+        addi $4, $0, 'C'
+        addi $2, $0, 11
+        syscall
+
+        addi $4, $0, 'O'
+        addi $2, $0, 11
+        syscall
+
+        addi $4, $0, 'L'
+        addi $2, $0, 11
+        syscall
+
+        addi $4, $0, 'E'
+        addi $2, $0, 11
+        syscall
+
+        addi $4, $0, 'T'
+        addi $2, $0, 11
+        syscall
+
+        addi $4, $0, 'A'
+        addi $2, $0, 11
+        syscall
+
+        addi $4, $0, 'D'
+        addi $2, $0, 11
+        syscall
+
+        addi $4, $0, 'O'
+        addi $2, $0, 11
+        syscall
+
+        addi $4, $0, 'S'
+        addi $2, $0, 11
+        syscall
+
+        addi $4, $0, ':'
+        addi $2, $0, 11
+        syscall
+
+        addi $4, $0, ' '
+        addi $2, $0, 11
+        syscall
+        
+        add $4, $0, $25
+        addi $2, $0, 1
+        syscall
+        
+        addi $4, $0, '\n'
+        addi $2, $0, 11
+        syscall
+        
+        jr $31
 #--------------------------------------------------------------------------------
 	
 gameOver:
 	jal sully
+	
+	jal orbesColetados
 	
         addi $4, $0, 'G'
         addi $2, $0, 11
@@ -115,26 +232,4 @@ gameOver:
 
 #--------------------------------------------------------------------------------
 
-movSully:
-	add $18, $0, $31
-	lui $13, 0xffff # guarda 1 se tiver entrada do teclado e 0 se n�o tiver
-	lw $14, 0($13) # guarda o valor teclado no 14
-	beq $14, $0, fimMovSully
-	lw $14, 4($13)
-	
-	addi $15, $0, 65 # tecla A
-	beq $15, $14, movEsquerda
-	addi $15, $0, 97 # tecla a
-	beq $15, $14, movEsquerda
-	
-	addi $15, $0, 68 # tecla D
-	beq $15, $14, movDireita
-	addi $15, $0, 100 # tecla d
-	beq $15, $14, movDireita
-
-	fimMovSully:
-		jal sully
-		add $31, $0, $18
-		jr $31
-	
 	
