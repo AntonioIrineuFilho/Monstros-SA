@@ -2,29 +2,86 @@
 .globl alberto
 
 alberto:
-	lui $12, 0x1001
-	add $12, $12, $a1 #Posição inicial 
-	
 
-	addi $13, $0, 0xd1fa02 #ponto de referencia
+	addi $sp, $sp, -12
+	sw $15, 0($sp)
+	sw $12, 4($sp)
+	sw $16, 8($sp)
+	
+	lui $12, 0x1001
+	add $12, $12, $15 #Posição atual 
+	
+	
+	
 	addi $14, $0, 0xf58014 #corpo
 	addi $15, $0, 0xffffff #branco
-	
-	sw $13, 0($12)
+	addi $16, $0, 0xfcc7b0
 	
 	# primeira linha
+	lw $8, 540($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 	sw $0, 540($12)
+	
+	lw $8, 584($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 	sw $0, 584($12)
 	#segunda linha
+	lw $8, 1052($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 	sw $0, 1052($12)
+	
+	lw $8, 1064($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 	sw $14, 1064($12)
+	
+	lw $8, 1068($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 	sw $14, 1068($12)
+	
+	lw $8, 1068($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 	sw $14, 1072($12)
+	
+	lw $8, 1076($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 	sw $14, 1076($12)
+	
+	lw $8, 1080($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 	sw $14, 1080($12)
+	
+	lw $8, 1084($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 	sw $14, 1084($12)
+	
+	lw $8, 1096($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 	sw $0, 1096($12)
 	# 3
+	lw $8, 1564($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 	sw $0, 1564($12)
 	sw $14, 1568($12)
 	sw $14, 1572($12)
@@ -36,8 +93,16 @@ alberto:
 	sw $14, 1596($12)
 	sw $14, 1600($12)
 	sw $14, 1604($12)
+	lw $8, 1608($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 	sw $0, 1608($12)
 	# 4
+	lw $8, 2076($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 	sw $14, 2076($12)
 	sw $14, 2080($12)
 	sw $14, 2084($12)
@@ -49,8 +114,16 @@ alberto:
 	sw $14, 2108($12)
 	sw $14, 2112($12)
 	sw $14, 2116($12)
+	lw $8, 2120($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 	sw $14, 2120($12)
 	# 5
+	lw $8, 2584($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 	sw $14, 2584($12)
 	sw $14, 2588($12)
 	sw $14, 2592($12)
@@ -64,8 +137,16 @@ alberto:
 	sw $15, 2624($12)
 	sw $14, 2628($12)
 	sw $14, 2632($12)
+	lw $8, 2636($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 	sw $14, 2636($12)
 	# 6
+	lw $8, 3092($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 	sw $14, 3092($12)
 	sw $14, 3096($12)
 	sw $14, 3100($12)
@@ -81,8 +162,16 @@ alberto:
 	sw $15, 3140($12)
 	sw $14, 3144($12)
 	sw $14, 3148($12)
+	lw $8, 3152($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 	sw $14, 3152($12)
 	#7
+	lw $8, 3604($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 	sw $14, 3604($12)
 	sw $14, 3608($12)
 	sw $14, 3612($12)
@@ -98,8 +187,16 @@ alberto:
 	sw $15, 3652($12)
 	sw $14, 3656($12)
 	sw $14, 3660($12)
+	lw $8, 3664($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 	sw $14, 3664($12)
 	#8
+	lw $8, 4116($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 	sw $14, 4116($12)
 	sw $14, 4120($12)
 	sw $14, 4124($12)
@@ -115,8 +212,16 @@ alberto:
 	sw $15, 4164($12)
 	sw $14, 4168($12)
 	sw $14, 4172($12)
+	lw $8, 4176($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 	sw $14, 4176($12)
 	#9
+	lw $8, 4628($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 	sw $14, 4628($12)
 	sw $14, 4632($12)
 	sw $14, 4636($12)
@@ -132,8 +237,16 @@ alberto:
 	sw $14, 4676($12)
 	sw $14, 4680($12)
 	sw $14, 4684($12)
+	lw $8, 4688($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 	sw $14, 4688($12)
 	#10
+	lw $8, 5140($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 	sw $14, 5140($12)
 	sw $14, 5144($12)
 	sw $14, 5148($12)
@@ -149,8 +262,16 @@ alberto:
 	sw $14, 5188($12)
 	sw $14, 5192($12)
 	sw $14, 5196($12)
+	lw $8, 5200($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 	sw $14, 5200($12)
 	#11
+	lw $8, 5648($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 	sw $14, 5648($12)
 	sw $14, 5652($12)
 	sw $14, 5656($12)
@@ -168,8 +289,16 @@ sw $14, 5700($12)
 sw $14, 5704($12)
 sw $14, 5708($12)
 sw $14, 5712($12)
+lw $8, 5716($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 sw $14, 5716($12)
 	#12
+	lw $8, 6156($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 	sw $14, 6156($12)
 	sw $14, 6160($12)
 sw $14, 6164($12)
@@ -189,8 +318,16 @@ sw $14, 6216($12)
 sw $14, 6220($12)
 sw $14, 6224($12)
 sw $14, 6228($12)
+lw $8, 6232($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 sw $14, 6232($12)
 	#13
+	lw $8, 6664($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 	sw $14, 6664($12)
 	sw $14, 6668($12) 
 sw $14, 6672($12)
@@ -212,8 +349,16 @@ sw $14, 6732($12)
 sw $14, 6736($12)
 sw $14, 6740($12)
 sw $14, 6744($12)
+lw $8, 6748($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 sw $14, 6748($12)
 	#14
+	lw $8, 7172($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 	sw $14, 7172($12) 
 sw $14, 7176($12) 
 sw $14, 7180($12) 
@@ -237,8 +382,16 @@ sw $14, 7248($12)
 sw $14, 7252($12)
 sw $14, 7256($12)
 sw $14, 7260($12)
+lw $8, 7264($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 sw $14, 7264($12)
 #15
+lw $8, 7684($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 sw $14, 7684($12) 
 sw $14, 7688($12) 
 sw $14, 7692($12) 
@@ -262,8 +415,16 @@ sw $14, 7760($12)
 
 sw $14, 7768($12)
 sw $14, 7772($12)
+lw $8, 7776($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 sw $14, 7776($12)
 #16
+lw $8, 8196($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 sw $14, 8196($12) 
 sw $14, 8200($12) 
 
@@ -283,8 +444,16 @@ sw $14, 8264($12)
 sw $14, 8268($12)
 
 sw $14, 8284($12)
+lw $8, 8288($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 sw $14, 8288($12)
 #17
+lw $8, 8708($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 sw $14, 8708($12)  # 8196 + 512
 sw $14, 8712($12)  # 8200 + 512
 sw $14, 8732($12)  # 8220 + 512
@@ -300,8 +469,16 @@ sw $14, 8768($12)  # 8256 + 512
 sw $14, 8772($12)  # 8260 + 512
 sw $14, 8776($12)  # 8264 + 512
 sw $14, 8796($12)  # 8284 + 512
+lw $8, 8800($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 sw $14, 8800($12)  # 8288 + 512
 #18
+lw $8, 9220($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 sw $14, 9220($12)
 sw $14, 9224($12)
 sw $14, 9228($12)
@@ -319,8 +496,16 @@ sw $14, 9284($12)
 sw $14, 9288($12)
 sw $14, 9304($12)
 sw $14, 9308($12)
+lw $8, 9312($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 sw $14, 9312($12)
 #19
+lw $8, 9732($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 sw $14, 9732($12)
 sw $14, 9736($12)
 
@@ -333,8 +518,16 @@ sw $14, 9796($12)
 sw $14, 9800($12)
 
 sw $14, 9820($12)
+lw $8, 9824($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 sw $14, 9824($12)
 #20
+lw $8, 10244($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 sw $14, 10244($12)
 sw $14, 10248($12)
 
@@ -347,8 +540,16 @@ sw $14, 10308($12)
 sw $14, 10312($12)
 
 sw $14, 10332($12)
+lw $8, 10336($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 sw $14, 10336($12)
 #21
+lw $8, 10756($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 sw $14, 10756($12)
 sw $14, 10760($12)
 sw $14, 10764($12)
@@ -363,8 +564,16 @@ sw $14, 10824($12)
 
 sw $14, 10840($12)
 sw $14, 10844($12)
+lw $8, 10848($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 sw $14, 10848($12)
 #22
+lw $8, 11292($12)
+	beq $8, $0, gameOverRyan
+	beq $8, $16, gameOverRyan
+	beq $8, $15, gameOverRyan
 sw $14, 11292($12)
 sw $14, 11296($12)
 sw $14, 11300($12)
@@ -390,5 +599,10 @@ sw $14, 12352($12)
 sw $14, 12356($12)
 sw $14, 12360($12)
 sw $14, 12364($12)
+
+lw $15, 0($sp)
+lw $12, 4($sp)
+lw $16, 8($sp)
+addi $sp, $sp, 12
 
 jr $31
