@@ -75,7 +75,7 @@ colisaoNpcArma:
    
    addi $16, $16, -1
    ble $16, $0, fim
-   
+   j GameOver
    j retorno2
 
 
@@ -121,6 +121,7 @@ colisaoTiroNpc:
    
    addi $17, $17, -1
    ble $17, $0, fim
+   j YouWin
    j retorno3
 
 
