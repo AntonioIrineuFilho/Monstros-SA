@@ -90,7 +90,7 @@ colisaoComSully1:
         jal sully
         lui $8, 0x1001
         addi $25, $25, 1
-        addi $16, $0, 20 # reg sobrando
+        addi $16, $0, 10 # reg sobrando
         beq $25, $16, mainBoo # prox jogo
         j returnMovSully
         
@@ -182,7 +182,7 @@ colisaoComSully2:
         jal sully
         lui $9, 0x1001
         addi $25, $25, 1
-        addi $16, $0, 20 # reg sobrando
+        addi $16, $0, 10 # reg sobrando
         beq $25, $16, mainBoo # prox jogo
         j returnMovSully
         
@@ -274,7 +274,7 @@ colisaoComSully3:
         jal sully
         lui $10, 0x1001
         addi $25, $25, 1
-        addi $16, $0, 20 # reg sobrando
+        addi $16, $0, 10 # reg sobrando
         beq $25, $16, mainBoo # prox jogo
         j returnMovSully
 
@@ -366,7 +366,7 @@ colisaoComSully4:
         jal sully
         lui $11, 0x1001
         addi $25, $25, 1
-        addi $16, $0, 20 # reg sobrando
+        addi $16, $0, 10 # reg sobrando
         beq $25, $16, mainBoo # prox jogo
         j returnMovSully
 
@@ -459,6 +459,6 @@ colisaoComSully5:
         jal sully
         lui $12, 0x1001
         addi $25, $25, 1
-        addi $16, $0, 20 # reg sobrando
+        addi $16, $0, 10 # reg sobrando
         beq $25, $16, mainBoo # prox jogo
         j returnMovSully
