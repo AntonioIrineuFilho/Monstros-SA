@@ -26,15 +26,18 @@ startGame2:
 	
 	addi $18, $0, 16384 # LIMITE lat esquerda
 	
-	
+	addi $a1, $0, 200
 loopGameRyan:
 	addi $13, $0, 16820 # LIMITE lat direita - boo	
+	beq $a1, $0, venceu
 
 	jal moveGeralAlberto
 	jal timer 
 	jal timer
 	jal timer
 
+	addi $a1, $a1, -1
+	
 	lw $23, 0($19)
 	beq $23, $0, fimLoopGame
 	lw $23, 4($19)
@@ -60,7 +63,10 @@ callDireita:
 
 fimLoopGame: j loopGameRyan
 
-	
+venceu:
+
+	addi $2, $0, 10
+	syscall
 
 # reg USADOS: $11, 8, 9
 moveDireitaRyan:
@@ -517,10 +523,6 @@ lacoPulo2:beq $12, $0, outLacoPulo2
 	
 	jal moveGeralAlberto
 	jal timer
-	
-	
-
-	
 	
 	lw $23, 0($19)
 	beq $23, $0, fimPulo2
