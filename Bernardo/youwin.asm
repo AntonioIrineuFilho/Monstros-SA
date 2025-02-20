@@ -1,5 +1,5 @@
 .text
-
+.globl YouWin
 
 YouWin:
     lui $8, 0x1001
@@ -563,4 +563,4 @@ sw $9, 11668($8)
 sw $9, 11156($8)
 sw $9, 10644($8)
 
-
+j fim

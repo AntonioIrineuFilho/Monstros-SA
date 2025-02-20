@@ -1,5 +1,5 @@
 .text
-
+.globl GameOver
 
 GameOver:
     lui $8, 0x1001
@@ -734,7 +734,7 @@ sw $9, 17852($8)
 sw $9, 18368($8)
 sw $9, 18364($8)
 
-
+j fim
 
 
 
