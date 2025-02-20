@@ -1,482 +1,122 @@
-.data
 .text
-# REG LIBERADOS -> 12 ATÃ‰ 25
-main:
-	lui $8, 0x1001 # primeiro endereÃ§o de memÃ³ria
-	addi $9, $0, 0xa5abc5 # cor do fundo
-	addi $10, $0, 0x636194 # cor dos pilares e da borda das janelas
-	addi $11, $0, 0xe5bc43 # cor luz das janelas
-	addi $12, $0, 8192 # i
+.globl criarCenario
 
-forFundo:
-	beq $0, $12, fimFundo
-	
-	sw $9, 0($8) # gravou a cor no endereÃ§o
-	addi $8, $8, 4 # passou pro proximo endereÃ§o
-	
-	sub $12, $12, 1
-	j forFundo
+    
+# $4 -> canto superior esquerdo do cenario
+criarCenario: 
 
-fimFundo:
-	lui $8, 0x1001
-	addi $12, $0, 64 # i
-forBorda:
-	beq $0, $12, fimBorda
-	
-	sw $10, 0($8)
-	addi $8, $8, 512
-	
-	sub $12, $12, 1
-	j forBorda
+	sw $31, 0($sp)          # Salva o endereço de retorno
+    addi $sp, $sp, -4
+    
+    sw $8, 0($sp)           # Salva $9
+    addi $sp, $sp, -4
+    
+    sw $9, 0($sp)          # Salva $10
+    addi $sp, $sp, -4
+    
+    sw $10, 0($sp)          # Salva o endereço de retorno
+    addi $sp, $sp, -4
 
-fimBorda:
-	lui $8, 0x1001
-	addi $12, $0, 25 # i
-forPilar:
-	beq $0, $12, fimPilar
-	
-	sw $10, 56($8)
-        sw $10, 568($8)
-        sw $10, 1080($8)
-        sw $10, 1592($8)
-        sw $10, 2104($8)
-        sw $10, 2616($8)
-        sw $10, 3128($8)
-        sw $10, 3640($8)
-        sw $10, 4152($8)
-        sw $10, 4664($8)
-        sw $10, 5176($8)
-        sw $10, 5688($8)
-        sw $10, 6200($8)
-        sw $10, 6712($8)
-        sw $10, 7224($8)
-        sw $10, 7736($8)
-        sw $10, 8248($8)
-        sw $10, 8760($8)
-        sw $10, 9272($8)
-        sw $10, 9784($8)
-        sw $10, 10296($8)
-        sw $10, 10808($8)
-        sw $10, 11320($8)
-        sw $10, 11832($8)
-        sw $10, 12344($8)
-        sw $10, 12856($8)
-        sw $10, 13368($8)
-        sw $10, 13880($8)
-        sw $10, 14392($8)
-        sw $10, 14904($8)
-        sw $10, 15416($8)
-        sw $10, 15928($8)
-        sw $10, 16440($8)
-        sw $10, 16952($8)
-        sw $10, 17464($8)
-        sw $10, 17976($8)
-        sw $10, 18488($8)
-        sw $10, 19000($8)
-        sw $10, 19512($8)
-        sw $10, 20024($8)
-        sw $10, 20536($8)
-        sw $10, 21048($8)
-        sw $10, 21560($8)
-        sw $10, 22072($8)
-        sw $10, 22584($8)
-        sw $10, 23096($8)
-        sw $10, 23608($8)
-        sw $10, 24120($8)
-        sw $10, 24632($8)
-        sw $10, 25144($8)
-        sw $10, 25656($8)
-        sw $10, 26168($8)
-        sw $10, 26680($8)
-        sw $10, 27192($8)
-        sw $10, 27704($8)
-        sw $10, 28216($8)
-        sw $10, 28728($8)
-        sw $10, 29240($8)
-        sw $10, 29752($8)
-        sw $10, 30264($8)
-        sw $10, 30776($8)
-        sw $10, 31288($8)
-        sw $10, 31800($8)
-        sw $10, 32312($8)
+	sw $11, 0($sp)          # Salva o endereço de retorno
+    addi $sp, $sp, -4
+    
+    sw $12, 0($sp)           # Salva $9
+    addi $sp, $sp, -4
+    
+    sw $13, 0($sp)           # Salva $9
+    addi $sp, $sp, -4
+    
+    sw $14, 0($sp)           # Salva $9
+    addi $sp, $sp, -4
+    
+    sw $15, 0($sp)           # Salva $9
+    addi $sp, $sp, -4
+    
+    sw $17, 0($sp)           # Salva $9
+    addi $sp, $sp, -4
 
-	sw $10, 208($8)
-        sw $10, 720($8)
-        sw $10, 1232($8)
-        sw $10, 1744($8)
-        sw $10, 2256($8)
-        sw $10, 2768($8)
-        sw $10, 3280($8)
-        sw $10, 3792($8)
-        sw $10, 4304($8)
-        sw $10, 4816($8)
-        sw $10, 5328($8)
-        sw $10, 5840($8)
-        sw $10, 6352($8)
-        sw $10, 6864($8)
-        sw $10, 7376($8)
-        sw $10, 7888($8)
-        sw $10, 8400($8)
-        sw $10, 8912($8)
-        sw $10, 9424($8)
-        sw $10, 9936($8)
-        sw $10, 10448($8)
-        sw $10, 10960($8)
-        sw $10, 11472($8)
-        sw $10, 11984($8)
-        sw $10, 12496($8)
-        sw $10, 13008($8)
-        sw $10, 13520($8)
-        sw $10, 14032($8)
-        sw $10, 14544($8)
-        sw $10, 15056($8)
-        sw $10, 15568($8)
-        sw $10, 16080($8)
-        sw $10, 16592($8)
-        sw $10, 17104($8)
-        sw $10, 17616($8)
-        sw $10, 18128($8)
-        sw $10, 18640($8)
-        sw $10, 19152($8)
-        sw $10, 19664($8)
-        sw $10, 20176($8)
-        sw $10, 20688($8)
-        sw $10, 21200($8)
-        sw $10, 21712($8)
-        sw $10, 22224($8)
-        sw $10, 22736($8)
-        sw $10, 23248($8)
-        sw $10, 23760($8)
-        sw $10, 24272($8)
-        sw $10, 24784($8)
-        sw $10, 25296($8)
-        sw $10, 25808($8)
-        sw $10, 26320($8)
-        sw $10, 26832($8)
-        sw $10, 27344($8)
-        sw $10, 27856($8)
-        sw $10, 28368($8)
-        sw $10, 28880($8)
-        sw $10, 29392($8)
-        sw $10, 29904($8)
-        sw $10, 30416($8)
-        sw $10, 30928($8)
-        sw $10, 31440($8)
-        sw $10, 31952($8)
-        sw $10, 32464($8)
-	
-	sw $10, 360($8)
-        sw $10, 872($8)
-        sw $10, 1384($8)
-        sw $10, 1896($8)
-        sw $10, 2408($8)
-        sw $10, 2920($8)
-        sw $10, 3432($8)
-        sw $10, 3944($8)
-        sw $10, 4456($8)
-        sw $10, 4968($8)
-        sw $10, 5480($8)
-        sw $10, 5992($8)
-        sw $10, 6504($8)
-        sw $10, 7016($8)
-        sw $10, 7528($8)
-        sw $10, 8040($8)
-        sw $10, 8552($8)
-        sw $10, 9064($8)
-        sw $10, 9576($8)
-        sw $10, 10088($8)
-        sw $10, 10600($8)
-        sw $10, 11112($8)
-        sw $10, 11624($8)
-        sw $10, 12136($8)
-        sw $10, 12648($8)
-        sw $10, 13160($8)
-        sw $10, 13672($8)
-        sw $10, 14184($8)
-        sw $10, 14696($8)
-        sw $10, 15208($8)
-        sw $10, 15720($8)
-        sw $10, 16232($8)
-        sw $10, 16744($8)
-        sw $10, 17256($8)
-        sw $10, 17768($8)
-        sw $10, 18280($8)
-        sw $10, 18792($8)
-        sw $10, 19304($8)
-        sw $10, 19816($8)
-        sw $10, 20328($8)
-        sw $10, 20840($8)
-        sw $10, 21352($8)
-        sw $10, 21864($8)
-        sw $10, 22376($8)
-        sw $10, 22888($8)
-        sw $10, 23400($8)
-        sw $10, 23912($8)
-        sw $10, 24424($8)
-        sw $10, 24936($8)
-        sw $10, 25448($8)
-        sw $10, 25960($8)
-        sw $10, 26472($8)
-        sw $10, 26984($8)
-        sw $10, 27496($8)
-        sw $10, 28008($8)
-        sw $10, 28520($8)
-        sw $10, 29032($8)
-        sw $10, 29544($8)
-        sw $10, 30056($8)
-        sw $10, 30568($8)
-        sw $10, 31080($8)
-        sw $10, 31592($8)
-        sw $10, 32104($8)
-        sw $10, 32616($8)
-	
-	addi $8, $8, 4
-	
-	sub $12, $12, 1
-	j forPilar
-
-fimPilar:
-	lui $8, 0x1001
-	addi $12, $0, 13 # i
-forBordaJanelaHori:
-	beq $0, $12, fimBordaJanelaHori
-	
-	sw $10, 2564($8)
-	sw $10, 6660($8)
-	sw $10, 2716($8)
-	sw $10, 6812($8)
-	sw $10, 2868($8)
-	sw $10, 6964($8)
-	sw $10, 3020($8)
-	sw $10, 7116($8)
-	addi $8, $8, 4
-	
-	sub $12, $12, 1
-	j forBordaJanelaHori
-	
-fimBordaJanelaHori:
-	lui $8, 0x1001
-	addi $12, $0, 7 # i
-forBordaJanelaVert:
-	beq $0, $12, fimBordaJanelaVert
-	
-        sw $10, 3076($8)
-        sw $10, 3092($8)
-        sw $10, 3108($8)
-        sw $10, 3124($8)
-        sw $10, 3228($8)
-        sw $10, 3244($8)
-        sw $10, 3260($8)
-        sw $10, 3276($8)
-        sw $10, 3380($8)
-        sw $10, 3396($8)
-        sw $10, 3412($8)
-        sw $10, 3428($8)
-        sw $10, 3532($8)
-        sw $10, 3548($8)
-        sw $10, 3564($8)
-        sw $10, 3580($8)
-	
-	addi $8, $8, 512
-	
-	sub $12, $12, 1
-	j forBordaJanelaVert
-
-fimBordaJanelaVert:
-	lui $8, 0x1001
-	addi $12, $0, 7 # i
-forLuzJanela:
-	beq $0, $12, fimLuzJanela
-	
-	sw $11, 3080($8)
-        sw $11, 3084($8)
-        sw $11, 3088($8)
-        sw $11, 3096($8)
-        sw $11, 3100($8)
-        sw $11, 3104($8)
-        sw $11, 3112($8)
-        sw $11, 3116($8)
-        sw $11, 3120($8)
-        sw $11, 3232($8)
-        sw $11, 3236($8)
-        sw $11, 3240($8)
-        sw $11, 3248($8)
-        sw $11, 3252($8)
-        sw $11, 3256($8)
-        sw $11, 3264($8)
-        sw $11, 3268($8)
-        sw $11, 3272($8)
-        sw $11, 3384($8)
-        sw $11, 3388($8)
-        sw $11, 3392($8)
-        sw $11, 3400($8)
-        sw $11, 3404($8)
-        sw $11, 3408($8)
-        sw $11, 3416($8)
-        sw $11, 3420($8)
-        sw $11, 3424($8)
-        sw $11, 3536($8)
-        sw $11, 3540($8)
-        sw $11, 3544($8)
-        sw $11, 3552($8)
-        sw $11, 3556($8)
-        sw $11, 3560($8)
-        sw $11, 3568($8)
-        sw $11, 3572($8)
-        sw $11, 3576($8)
-	
-	addi $8, $8, 512
-	
-	sub $12, $12, 1
-	j forLuzJanela
-	
-fimLuzJanela:
-	lui $8, 0x1001
-	addi $8, $8, 29184
-	addi $12, $0, 0x5c5696 # solo
-	addi $13, $0, 896 # i
-forSolo:
-	beq $0, $13, funcDelay1
-	
-	sw $12, 0($8)
-	addi $8, $8, 4
-	
-	sub $13, $13, 1
-	j forSolo
-	
-	lui $8, 0x1001
-        ori $9, $0, 0xf7bee7
-        
-        addi $20, $0, 8192
-
-funcDelay1:
-	jal delay        
-#------------------------------cenário Ryan------------------------------------------------------------------------------
-
-
-	lui $8, 0x1001
-        ori $9, $0, 0xf7bee7
-        
-        addi $20, $0, 8192
-test:   
-	beq $20, $0, outTest
-
-        sw $9, 0($8)
-        addi $8, $8, 4
-       
-        
-        addi $20, $20, -1
-        j test  
-        
-outTest:  
-
-	add $8, $0, $0
-	lui $8, 0x1001
-	ori $9, $0, 0xff73d8
-	addi $20, $0, 8192
-	addi $21, $0, 4
-	
-test2:	beq $20, $0, outTest2
-
-	test2interno: beq $21, $0, outTest2interno
-
-		sw $9, 0($8)
-		addi $8, $8, 4
-		
-		addi $21, $21, -1
-		j test2interno
-	outTest2interno:
-	
-	addi $8, $8, 16
-	addi $20, $20, -1
-	addi $21, $0, 4
-	j test2
-outTest2:
-
-	add $8, $0, $0
-	lui $8, 0x1001
-	ori $9, $0, 0xbf4334
-	addi $20, $0, 8192
-	addi $21, $0, 6911
-	
-test3:	beq $20, $0, funcDelay2
-	
-	sle $22, $20, $21 #if $20<=$21 {$22=1} else {$22=0}
-	beq $22, $0, printChao
-	j fimChao
-printChao:
-	sw $9, 27648($8)
-	addi $8, $8, 4
-fimChao:
-	addi $20, $20, -1
-	j test3
-
-funcDelay2:
-	jal delay  
-
-#-------------------------------cenário Bernardo----------------------------------------------------------------------------
-
-    lui $8, 0x1001         
+    lui $8, 0x1001
+    add $8, $8, $4
+                  
     addi $9, $0, 0xFFFFF0  #parede 
     addi $10, $0, 0xc57d56  #piso
-    addi $11, $0, 8192 #contador
     addi $12, $0, 0x5C4033 #muro 
     addi $13, $0, 0x000000 #detalhe muro
     addi $14, $0, 0xe5bc43 #luz janela
     addi $15, $0, 0x5C4033 #janela 
-forFundo2: 
-    beq $0, $11, fimFundo2 
-    sw $9, 0($8)           
-    addi $8, $8, 4         
-    sub $11, $11, 1         
-    j forFundo2              
-
-
-fimFundo2:
-    lui $8, 0x1001
-    addi $8, $8, 24576     
-    addi $11, $0, 2048   
+    addi $17, $0, 0xFFFFF0  #parede
     
+    addi $11, $0, 8192 #contador
+forFundo: 
+    beq $0, $11, fimFundo  
+    
+    sw $9, 0($8)    #repete junto ao lw 
+    addi $8, $8, 4
+             
+    sub $11, $11, 1         
+    j forFundo              
+
+
+fimFundo:
+    lui $8, 0x1001
+    add $8, $8, $4
+    addi $8, $8, 24576
+         
+    addi $11, $0, 2048   
 forPiso:
-    beq $0, $11, fimPiso    
+    beq $0, $11, fimPiso
+        
     sw $10, 2560($8)          
-    addi $8, $8, 4          
+    addi $8, $8, 4
+             
     sub $11, $11, 1        
     j forPiso  
 	
 fimPiso:
     lui $8, 0x1001          
-    addi $8, $8, 65532    
+    add $8, $8, $4
+    
     sub $11, $0, $8  
     li $12, 14336           # Inicia o contador com 14336
-    lui $8, 0x1001          # Carrega a parte superior do endereço base
+    lui $8, 0x1001          # Carrega a parte superior do endereÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â§o base
+    add $8, $8, $4
     addi $8, $8, 14336      # Ajusta $8 para o valor 0x10010000 + 14336
     li $9, 0x5C4033        
 
 forMuro:
 
     beq $12, 15488, fimMuro 
+    
     sw $9, 0($8)       
     addi $8, $8, 4
+    
     addi $12, $12, 1        
     j forMuro              
 
 fimMuro:
     lui $8, 0x1001
-    li $12, 16384           
-    lui $8, 0x1001          
-    addi $8, $8, 16384      
+    add $8, $8, $4
+    
+    li $12, 16384
+         
+    lui $8, 0x1001         
+    addi $8, $8, 16384
+    add $8, $8, $4
+          
     li $9, 0x000000        
 	
 forDetalhe:
     beq $12, 16512 , fimDetalhe
+    
     sw $13, 0($8)
-    addi $8, $8, 4           
+    addi $8, $8, 4
+            
     addi $12, $12, 1        
     j forDetalhe            
     
 fimDetalhe:
 	lui $8, 0x1001
+	add $8, $8, $4
 	
 Janela:
 	#lateral esquerda
@@ -680,8 +320,8 @@ Janela:
 	sw $15, 13216($8)
 	sw $15, 14236($8)
 #meio
-sw $15, 9056($8)
-sw $15, 8544($8)
+	sw $15, 9056($8)
+	sw $15, 8544($8)
 sw $15, 8032($8)
 sw $15, 7520($8)
 sw $15, 7008($8)
@@ -894,16 +534,12 @@ sw $14, 14132($8)
 sw $14, 14136($8)
 sw $14, 14140($8)
 
-
-
 sw $14, 13124($8)
 sw $14, 13636($8)
 sw $14, 14148($8)
 sw $14, 13128($8)
 sw $14, 13640($8)
 sw $14, 14152($8)
-
-
 
 sw $14, 13136($8)
 sw $14, 13648($8)
@@ -1184,22 +820,45 @@ sw $14, 5492($8)
 sw $14, 4988($8)
 sw $14, 5500($8)
 
+
+    addi $sp, $sp, 4
+    lw $17, 0($sp)          # Salva o endereço de retorno
+    
+	addi $sp, $sp, 4
+    lw $15, 0($sp)           # Salva $9
+    
+    addi $sp, $sp, 4
+    sw $14, 0($sp)          # Salva $10
+    
+    addi $sp, $sp, 4
+    sw $13, 0($sp)          # Salva o endereço de retorno
+    
+    addi $sp, $sp, 4
+	sw $12, 0($sp)          # Salva o endereço de retorno
+    
+	addi $sp, $sp, 4
+    sw $11, 0($sp)           # Salva $9
+
+    addi $sp, $sp, 4
+    sw $10, 0($sp)           # Salva $9
+    
+    addi $sp, $sp, 4
+    sw $9, 0($sp)           # Salva $9
+    
+	addi $sp, $sp, 4
+    lw $8, 0($sp)           # Salva $9
+    
+	addi $sp, $sp, 4
+    lw $31, 0($sp)           # Salva $9
+
+jr $31
+
+
+
+
+
+
+
 fim:
     addi $2, $0, 10
 	syscall
-
-delay:
-	addi $14, $0, 2000000
-wait:
-	beq $0, $14, fimWait
-	
-	nop
-	nop
-	nop
-
-	sub $14, $14, 1
-	j wait
-
-fimWait:
-	jr $31
-	
