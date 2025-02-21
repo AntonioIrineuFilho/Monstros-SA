@@ -72,13 +72,15 @@ forNpcArma:
    j retorno2
 colisaoNpcArma: 
    addi $3, $0, 1
-   j gameOverMike
    addi $16, $16, -1
-   ble $16, $0, fim
+   ble $16, $0, gameOverMike
+   
    j retorno2
 
 
 retorno2:
+
+    
     addi $sp, $sp, 4
     lw $18, 0($sp)
     
