@@ -15,7 +15,7 @@
 # REGS NAO UTILIZADOS -> 23, 24, 25
 
 delay:
-	addi $15, $0, 500000 # delay ideial: 200000
+	addi $15, $0, 50000 # delay ideial: 200000
 	forDelay:
 		beq $0, $15, fimDelay
 		nop

@@ -72,15 +72,15 @@ forNpcArma:
    j retorno2
 colisaoNpcArma: 
    addi $3, $0, 1
-   
    addi $16, $16, -1
-   ble $16, $0, youWin
+   ble $16, $0, gameOverMike
    
    j retorno2
-   j gameOverMike
 
 
 retorno2:
+
+    
     addi $sp, $sp, 4
     lw $18, 0($sp)
     
@@ -119,9 +119,9 @@ forTiroNpc:
    
 colisaoTiroNpc: 
    addi $3, $0, 1
-   j gameOverMike
+   
    addi $17, $17, -1
-   ble $17, $0, fim
+   ble $17, $0, youWin
    j retorno3
 
 
@@ -135,13 +135,14 @@ retorno3:
     addi $sp, $sp, 4
     lw $31, 0($sp)
     
-    jr $31  
+    jr $31    
     
-      
-      
-      
-      
-      
+    
+    
+    
+    
+    
+    
 gameOverMike:
 	lui $8, 0x1001
 	addi $9, $0, 8192
@@ -151,14 +152,13 @@ forGameOverMike:
 	beq $0, $9, fimForGameOverMike
 	
 	sw $10, 0($8)
-	addi $8, $8, 1
+	addi $8, $8, 4
 	
 	sub $9, $9, 1
 	j forGameOverMike 
 
 fimForGameOverMike:
 	j GameOver
-	
 	
 youWin:
 	lui $8, 0x1001
